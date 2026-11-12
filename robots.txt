@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zcloud8891.github.io/appliancewatt/sitemap.xml

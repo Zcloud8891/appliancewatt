@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home Backup Generator Basics: Running Watts, Starting Watts and Transfer Switches | ApplianceWatt</title>
+<meta name="description" content="Plain-English guide to home backup generators: running vs starting watts, how to add up your loads, power management, transfer switches and CO safety.">
+<link rel="canonical" href="https://zcloud8891.github.io/appliancewatt/guides/home-backup-generator-basics.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ApplianceWatt">
+<meta property="og:title" content="Home Backup Generator Basics: Running Watts, Starting Watts and Transfer Switches | ApplianceWatt">
+<meta property="og:description" content="Plain-English guide to home backup generators: running vs starting watts, how to add up your loads, power management, transfer switches and CO safety.">
+<meta property="og:url" content="https://zcloud8891.github.io/appliancewatt/guides/home-backup-generator-basics.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#1f5f8b">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f6f6f3;--card:#ffffff;--ink:#1b2127;--muted:#55606b;--line:#dcdfe2;--accent:#1f5f8b;--accent-ink:#ffffff;--soft:#e8f0f6;--warn:#fff4d6;--warn-line:#e2c46b}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{background:var(--card);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.2px}
+.brand span{color:var(--accent)}
+nav.top a{margin-left:14px;font-size:15px;text-decoration:none;color:var(--muted)}
+nav.top a:hover{color:var(--accent)}
+h1{font-size:28px;line-height:1.2;margin:22px 0 8px;letter-spacing:-.3px}
+h2{font-size:21px;line-height:1.3;margin:28px 0 8px}
+h3{font-size:17px;margin:18px 0 6px}
+p,li{color:var(--ink)}
+.lede{color:var(--muted);font-size:17px;margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+.note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14.5px;color:#22313d}
+.safety{background:var(--warn);border:1px solid var(--warn-line);border-radius:12px;padding:14px 16px;margin:20px 0}
+.safety h2,.safety h3{margin-top:4px}
+.safety li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+td.num,th.num{text-align:right;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+footer{margin:40px 0 0;padding:20px 0 120px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer a{color:var(--muted)}
+.sources li{font-size:14px;margin:4px 0;word-break:break-word}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:11px 16px;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.crumbs{font-size:14px;color:var(--muted);margin-top:14px}
+.crumbs a{color:var(--muted)}
+.guides li{margin:8px 0}
+@media (min-width:700px){h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html">Appliance<span>Watt</span></a>
+<nav class="top"><a href="../index.html">Calculator</a><a href="../guides/index.html">Guides</a><a href="../index.html#safety">Safety</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="crumbs"><a href="../index.html">Calculator</a> › <a href="index.html">Guides</a></div>
+<h1>Home backup generator basics</h1>
+<p class="crumbs" style="margin-top:0">Updated 2026-11-11. Wattages are typical values from the sources listed; check your appliance label.</p>
+
+<p class="lede">You do not need to understand electricity to size a backup generator. You need two numbers per appliance and one rule about how to add them.</p>
+
+<h2>Running watts and starting watts</h2>
+<p><strong>Running watts</strong> are what an appliance draws while it is on. <strong>Starting watts</strong> are the short spike some appliances need to get going. Things with motors or compressors (fridges, freezers, pumps, furnace blowers, air conditioners) have a big starting spike. Things that just heat or light (space heaters, coffee makers, LED bulbs) start at the same watts they run at; Champion's chart marks those as needing no extra starting watts (<a href="https://www.championpowerequipment.com/generator-wattage-chart" rel="nofollow">Champion</a>).</p>
+<p>Where do the numbers come from? The label. Virginia Cooperative Extension says the wattage is usually stamped on the bottom or back of the appliance or on its nameplate; if it only lists amps, multiply amps by volts (most U.S. household appliances are 120 V, larger ones like dryers and cooktops 240 V) (<a href="https://ext.vt.edu/content/pubs_ext_vt_edu/en/2901/2901-9014/2901-9014.html" rel="nofollow">Virginia Cooperative Extension</a>).</p>
+
+<h2>How to add them up</h2>
+<p>Do not add every starting number together. Honda's example: a fridge, a furnace with a 1/4 HP fan, five lights, a TV and a microwave add up to 5,300 W if you total the starting column, but only need about 3,000 W if you plan it (<a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a>).</p>
+<div class="card tablewrap"><table><thead><tr><th>Appliance</th><th class="num">Running</th><th class="num">Starting</th><th>Source</th></tr></thead><tbody><tr><td>Refrigerator</td><td class="num">200 W</td><td class="num">1,600 W</td><td><a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a></td></tr><tr><td>Furnace (1/4 HP fan)</td><td class="num">600 W</td><td class="num">1,600 W</td><td><a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a></td></tr><tr><td>5 lights</td><td class="num">300 W</td><td class="num">300 W</td><td><a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a></td></tr><tr><td>TV</td><td class="num">300 W</td><td class="num">300 W</td><td><a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a></td></tr><tr><td>Microwave</td><td class="num">1,500 W</td><td class="num">1,500 W</td><td><a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a></td></tr></tbody></table></div>
+<p>Our calculator uses the method on Generac's worksheet: total running watts, plus the one appliance with the biggest extra starting surge (<a href="https://www.generac.com/globalassets/products/residential/portable-generators/brochure/7713-gp6500e-portable-generator-brochure.pdf" rel="nofollow">Generac</a>). For the Honda list that is 2,900 W running and a 4,300 W peak if everything runs at once. Honda's point is that you can get much lower by not running the microwave while the fridge or furnace starts.</p>
+
+<h2>Power management</h2>
+<ul>
+<li>Start the big motors one at a time.</li>
+<li>Run occasional loads (microwave, coffee maker) by themselves.</li>
+<li>Decide ahead of time what you are willing to switch off. The more you are willing to juggle, the smaller the generator can be (<a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a>).</li>
+</ul>
+
+<h2>Getting power into the house</h2>
+<p>There are two safe ways: extension cords from the generator to each appliance, or a transfer switch. OSHA's rule is blunt: never attach a generator directly to a building's electrical system unless a qualified electrician has installed it with a transfer switch. Without one, the generator can energize wiring for great distances and electrocute utility workers and others (<a href="https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf" rel="nofollow">OSHA</a>). If you use cords, OSHA says to use grounded, 3-prong cords that are intact and rated for the load.</p>
+
+<h2>Where it sits and how it runs</h2>
+<ul>
+<li>Outside only, at least 20 feet from the house, not in a garage, porch or carport (<a href="https://www.cpsc.gov/Newsroom/News-Releases/2026/As-Winter-Storms-Threaten-Millions-in-the-US-CPSC-Issues-Safety-Tips-to-Help-Families-Prevent-Carbon-Monoxide-Poisoning-and-Fires" rel="nofollow">CPSC</a>).</li>
+<li>Working CO alarms inside. CPSC says one generator produces as much CO as hundreds of cars (<a href="https://www.cpsc.gov/Safety-Education/Safety-Guides/Carbon-Monoxide-Home/Generators-and-Engine-Driven-Tools" rel="nofollow">CPSC</a>).</li>
+<li>Keep it dry, let it cool before refueling, and store fuel outside living areas (OSHA).</li>
+<li>Look for models with an automatic CO shut-off feature (CPSC release above).</li>
+</ul>
+
+<h2>When a portable is not the right tool</h2>
+<p>If the list you need includes central air, an electric furnace, an electric water heater or a 240 V well pump, the totals climb fast (Champion lists a 3-ton central AC at 3,000 to 3,500 W running). That is the point to talk with a licensed electrician about a properly installed system instead of stretching a portable.</p>
+<p><a class="btn" href="../index.html">Run your own numbers in the calculator</a></p>
+<div class="safety">
+<h3>Before you start a generator</h3>
+<ul>
+<li><strong>Outside only.</strong> Never run a portable generator inside a home, garage, basement, crawlspace or shed, even with doors and windows open. CPSC says to keep it at least 20 feet from the house, not on a porch or in a carport, with the exhaust pointed away from the home (<a href="https://www.cpsc.gov/Newsroom/News-Releases/2026/As-Winter-Storms-Threaten-Millions-in-the-US-CPSC-Issues-Safety-Tips-to-Help-Families-Prevent-Carbon-Monoxide-Poisoning-and-Fires" rel="nofollow">CPSC</a>).</li>
+<li><strong>Carbon monoxide alarms.</strong> Have working battery or battery-backup CO alarms in the house (<a href="https://www.cpsc.gov/Safety-Education/Safety-Guides/Carbon-Monoxide-Home/Generators-and-Engine-Driven-Tools" rel="nofollow">CPSC</a>).</li>
+<li><strong>No backfeeding.</strong> Never connect a generator to your home's wiring unless a qualified electrician has installed a transfer switch (<a href="https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf" rel="nofollow">OSHA</a>).</li>
+</ul>
+</div>
+<h2>Sources</h2>
+<ol class="sources">
+<li>Honda Power Equipment, What size generator do I need? (power management): <a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">https://powerequipment.honda.com/generators/generator-how-much-power</a></li>
+<li>Generac, GP series portable generator brochure: <a href="https://www.generac.com/globalassets/products/residential/portable-generators/brochure/7713-gp6500e-portable-generator-brochure.pdf" rel="nofollow">https://www.generac.com/globalassets/products/residential/portable-generators/brochure/7713-gp6500e-portable-generator-brochure.pdf</a></li>
+<li>Champion Power Equipment, Generator wattage chart: <a href="https://www.championpowerequipment.com/generator-wattage-chart" rel="nofollow">https://www.championpowerequipment.com/generator-wattage-chart</a></li>
+<li>Virginia Cooperative Extension, Estimating appliance and home electronic energy use: <a href="https://ext.vt.edu/content/pubs_ext_vt_edu/en/2901/2901-9014/2901-9014.html" rel="nofollow">https://ext.vt.edu/content/pubs_ext_vt_edu/en/2901/2901-9014/2901-9014.html</a></li>
+<li>OSHA fact sheet, Using portable generators safely: <a href="https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf" rel="nofollow">https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf</a></li>
+<li>CPSC news release, Dec. 12, 2025: winter storm CO and fire safety tips: <a href="https://www.cpsc.gov/Newsroom/News-Releases/2026/As-Winter-Storms-Threaten-Millions-in-the-US-CPSC-Issues-Safety-Tips-to-Help-Families-Prevent-Carbon-Monoxide-Poisoning-and-Fires" rel="nofollow">https://www.cpsc.gov/Newsroom/News-Releases/2026/As-Winter-Storms-Threaten-Millions-in-the-US-CPSC-Issues-Safety-Tips-to-Help-Families-Prevent-Carbon-Monoxide-Poisoning-and-Fires</a></li>
+<li>CPSC, Generators and engine-driven tools: <a href="https://www.cpsc.gov/Safety-Education/Safety-Guides/Carbon-Monoxide-Home/Generators-and-Engine-Driven-Tools" rel="nofollow">https://www.cpsc.gov/Safety-Education/Safety-Guides/Carbon-Monoxide-Home/Generators-and-Engine-Driven-Tools</a></li>
+</ol>
+
+</main>
+<footer><div class="wrap">
+<p><strong>ApplianceWatt</strong> is a free sizing tool. Wattage numbers are typical values from manufacturer guides, not measurements of your appliances. Check the label on your own appliance and your generator's manual. Nothing here replaces a licensed electrician.</p>
+<p>This site has no affiliate or store links.</p>
+<p><a href="../index.html">Calculator</a> · <a href="../guides/index.html">Guides</a> · Updated 2026-11-11</p>
+</div></footer>
+</body></html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generator Size Calculator: Running and Starting Watts | ApplianceWatt</title>
+<meta name="description" content="Free generator sizing calculator: pick appliances, get total running watts, the largest starting surge, and a recommended generator size with headroom. Every wattage is sourced and editable.">
+<link rel="canonical" href="https://zcloud8891.github.io/appliancewatt/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ApplianceWatt">
+<meta property="og:title" content="Generator Size Calculator: Running and Starting Watts | ApplianceWatt">
+<meta property="og:description" content="Free generator sizing calculator: pick appliances, get total running watts, the largest starting surge, and a recommended generator size with headroom. Every wattage is sourced and editable.">
+<meta property="og:url" content="https://zcloud8891.github.io/appliancewatt/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#1f5f8b">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f6f6f3;--card:#ffffff;--ink:#1b2127;--muted:#55606b;--line:#dcdfe2;--accent:#1f5f8b;--accent-ink:#ffffff;--soft:#e8f0f6;--warn:#fff4d6;--warn-line:#e2c46b}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{background:var(--card);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.2px}
+.brand span{color:var(--accent)}
+nav.top a{margin-left:14px;font-size:15px;text-decoration:none;color:var(--muted)}
+nav.top a:hover{color:var(--accent)}
+h1{font-size:28px;line-height:1.2;margin:22px 0 8px;letter-spacing:-.3px}
+h2{font-size:21px;line-height:1.3;margin:28px 0 8px}
+h3{font-size:17px;margin:18px 0 6px}
+p,li{color:var(--ink)}
+.lede{color:var(--muted);font-size:17px;margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+.note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14.5px;color:#22313d}
+.safety{background:var(--warn);border:1px solid var(--warn-line);border-radius:12px;padding:14px 16px;margin:20px 0}
+.safety h2,.safety h3{margin-top:4px}
+.safety li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+td.num,th.num{text-align:right;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+footer{margin:40px 0 0;padding:20px 0 120px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer a{color:var(--muted)}
+.sources li{font-size:14px;margin:4px 0;word-break:break-word}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:11px 16px;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.crumbs{font-size:14px;color:var(--muted);margin-top:14px}
+.crumbs a{color:var(--muted)}
+.guides li{margin:8px 0}
+@media (min-width:700px){h1{font-size:34px}}
+
+.groups h2{font-size:16px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:22px 0 6px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
+.row.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.row .name{font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.row .src{font-size:12.5px;color:var(--muted);font-weight:400;margin-top:2px}
+.row .src a{color:var(--muted)}
+.ctl{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px;align-items:end;margin-top:10px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;height:44px}
+.qty button{width:40px;height:44px;border:0;background:#eef1f4;font-size:22px;line-height:1;cursor:pointer;color:var(--ink)}
+.qty output{min-width:34px;text-align:center;font-weight:700;font-size:17px}
+label.w{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+label.w input{display:block;width:100%;height:44px;margin-top:3px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:17px;color:var(--ink);background:#fff}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;color:#7a5600;background:var(--warn);border:1px solid var(--warn-line);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.bar{position:sticky;bottom:0;z-index:5;background:#0f2f45;color:#fff;border-radius:14px 14px 0 0;padding:10px 14px 12px;margin-top:20px;box-shadow:0 -6px 18px rgba(0,0,0,.12)}
+.bar .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.bar .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:#b9cfdf}
+.bar .v{font-size:18px;font-weight:800}
+.bar .rec{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.18);padding-top:8px;margin-top:2px}
+.bar .rec .v{font-size:17px;color:#ffd77a}
+.bar .small{font-size:12.5px;color:#d6e3ec;line-height:1.4}
+.opts{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.opts select{height:40px;border-radius:10px;border:1px solid var(--line);padding:0 8px;font-size:16px;background:#fff}
+.custom{display:grid;grid-template-columns:1fr;gap:8px}
+.custom input{height:44px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:16px;width:100%}
+.custom .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#breakdown td{font-size:14.5px}
+.warn240{display:none;margin-top:4px;font-size:12.5px;line-height:1.4;color:#ffe2a0}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html">Appliance<span>Watt</span></a>
+<nav class="top"><a href="index.html">Calculator</a><a href="guides/index.html">Guides</a><a href="index.html#safety">Safety</a></nav>
+</div></header>
+
+<main class="wrap">
+<h1>What size generator do I need?</h1>
+<p class="lede">Pick what you want to run, set how many, and get your total running watts, the biggest starting surge, and a generator size with headroom. Free, no sign-up, works offline once loaded.</p>
+
+<div class="safety" style="margin:12px 0;padding:10px 14px"><strong>Safety first:</strong> never run a generator indoors or in a garage, and only connect one to your house through a transfer switch. <a href="#safety">Read the safety rules</a>.</div>
+
+<div class="note"><strong>Typical values; check your appliance label.</strong> The starting numbers below come from published manufacturer wattage guides (Honda, Champion, Generac; each row names its source). Your appliance may draw more or less. You can edit any wattage. The label on the appliance usually lists watts, or amps and volts (watts = amps × volts), and motors can pull about three times their running current when they start (<a href="https://ext.vt.edu/content/pubs_ext_vt_edu/en/2901/2901-9014/2901-9014.html" rel="nofollow">Virginia Cooperative Extension</a>).</div>
+
+<div class="opts">
+<label for="headroom"><strong>Headroom</strong></label>
+<select id="headroom" aria-label="Headroom">
+<option value="0.10">10%</option>
+<option value="0.20" selected>20%</option>
+<option value="0.25">25%</option>
+<option value="0.30">30%</option>
+</select>
+<button class="btn ghost" id="reset" type="button">Clear all</button>
+</div>
+<p class="note" style="margin-top:0">Headroom is a cushion you choose, so the generator is not running flat out. The 20% default is our suggestion, not a manufacturer rule.</p>
+
+<div class="groups" id="list"></div>
+
+<h2>Add your own appliance</h2>
+<div class="card custom">
+<input id="cName" placeholder="Name (for example: shop vac)" aria-label="Appliance name">
+<div class="two">
+<input id="cRun" type="number" inputmode="numeric" min="0" placeholder="Running watts" aria-label="Running watts">
+<input id="cStart" type="number" inputmode="numeric" min="0" placeholder="Starting watts" aria-label="Starting watts">
+</div>
+<button class="btn" id="cAdd" type="button">Add to list</button>
+</div>
+
+<div class="bar" id="bar" aria-live="polite">
+<div class="grid">
+<div><div class="k">Total running</div><div class="v" id="tRun">0 W</div></div>
+<div><div class="k">Peak (with largest start)</div><div class="v" id="tPeak">0 W</div></div>
+<div class="rec"><div class="k">Look for a generator rated at least</div><div class="v" id="tRec">Pick an appliance</div><div class="small" id="tWhy"></div><div class="warn240" id="w240">One or more picks may need a 240 V outlet. Check the appliance label and the generator's outlets.</div></div>
+</div>
+</div>
+
+<h2>Your list</h2>
+<div class="card tablewrap"><table id="breakdown"><thead><tr><th>Appliance</th><th class="num">Qty</th><th class="num">Running</th><th class="num">Starting</th></tr></thead><tbody><tr><td colspan="4">Nothing picked yet.</td></tr></tbody></table></div>
+
+<h2>How the math works</h2>
+<ol>
+<li><strong>Add up running watts</strong> for everything you want on at the same time.</li>
+<li><strong>Find the biggest extra surge.</strong> Motors (fridges, pumps, furnace blowers, AC) pull more for a few seconds when they start. Take the one appliance whose starting watts are furthest above its running watts.</li>
+<li><strong>Peak = total running + that one extra surge.</strong> This assumes only one motor starts at a time, which is how Generac's worksheet sizes it (<a href="https://www.generac.com/globalassets/products/residential/portable-generators/brochure/7713-gp6500e-portable-generator-brochure.pdf" rel="nofollow">Generac</a>). Honda notes you can get by with a smaller unit by starting big loads one at a time (<a href="https://powerequipment.honda.com/generators/generator-how-much-power" rel="nofollow">Honda</a>).</li>
+<li><strong>Recommended:</strong> running watts × (1 + headroom), rounded up to the next 100, and a starting (surge) rating at least as high as your peak. Generators list both numbers; check both.</li>
+</ol>
+
+<section id="safety">
+<div class="safety">
+<h2>Generator safety</h2>
+<ul>
+<li><strong>Never run a generator indoors or in a garage.</strong> That includes basements, crawlspaces and sheds, even with doors or windows open. Opening them does not give enough ventilation to stop a deadly buildup of carbon monoxide (<a href="https://www.cpsc.gov/Newsroom/News-Releases/2026/As-Winter-Storms-Threaten-Millions-in-the-US-CPSC-Issues-Safety-Tips-to-Help-Families-Prevent-Carbon-Monoxide-Poisoning-and-Fires" rel="nofollow">CPSC, Dec. 12, 2025</a>).</li>
+<li><strong>Outside, at least 20 feet from the house.</strong> Not on a porch or in a carport. Point the exhaust away from the home and any building someone could enter, and close windows near it (CPSC, same release).</li>
+<li><strong>CO is colorless and odorless.</strong> CPSC says it can kill in minutes and that people can pass out before noticing symptoms like nausea, dizziness or weakness. If anyone feels sick, dizzy or weak, get to fresh air right away (<a href="https://www.cpsc.gov/Safety-Education/Safety-Guides/Carbon-Monoxide-Home/Generators-and-Engine-Driven-Tools" rel="nofollow">CPSC</a>).</li>
+<li><strong>Working CO alarms.</strong> Battery or battery-backup alarms on every level and outside sleeping areas; test them monthly (CPSC release above).</li>
+<li><strong>Use a transfer switch to power the house.</strong> Never plug a generator into a wall outlet or tie it to your panel. OSHA: attach a generator to a building's wiring only through a transfer switch installed by a qualified electrician; backfeeding can electrocute utility workers and others (<a href="https://www.osha.gov/sites/default/files/publications/OSHA3286.pdf" rel="nofollow">OSHA fact sheet</a>).</li>
+<li><strong>Cords and weather.</strong> Plug appliances straight into the generator with grounded (3-prong) cords rated for the load; keep the generator dry, and follow the maker's instructions for rain or snow (OSHA; CPSC).</li>
+<li><strong>Refuel cold.</strong> Shut it off and let it cool before refueling; fuel spilled on hot parts can ignite. Store fuel outside living areas (OSHA).</li>
+</ul>
+</div>
+</section>
+
+<h2>Guides</h2>
+<ul class="guides">
+<li><a href="guides/winter-storm-power-outage-oregon.html">Winter storm power outages in Oregon: a generator plan</a></li>
+<li><a href="guides/sump-pump-and-fridge-during-outage.html">Running a sump pump and fridge in an outage</a></li>
+<li><a href="guides/home-backup-generator-basics.html">Home backup generator basics</a></li>
+<li><a href="guides/rv-generator-sizing.html">RV generator sizing</a></li>
+<li><a href="guides/inverter-vs-conventional-generator.html">Quiet inverter vs conventional generator</a></li>
+</ul>
+</main>
+
+<script>
+(function(){
+var APPS=[{"id": "fridge_es", "name": "Refrigerator or freezer (Energy Star)", "group": "Kitchen", "run": 192, "start": 1200, "v240": false, "src": "honda", "note": "Honda lists 132-192 W running; top of range used."}, {"id": "fridge_old", "name": "Refrigerator/freezer (older or large)", "group": "Kitchen", "run": 700, "start": 2900, "v240": false, "src": "generac", "note": "Generac lists 700 W running plus 2,200 W additional starting."}, {"id": "chest_freezer", "name": "Chest or upright freezer", "group": "Kitchen", "run": 500, "start": 1000, "v240": false, "src": "champion", "note": "Champion lists 100-500 W running, 500-1,000 W starting; top of range used."}, {"id": "microwave_650", "name": "Microwave, 650 W", "group": "Kitchen", "run": 1000, "start": 1000, "v240": false, "src": "honda", "note": ""}, {"id": "microwave_1000", "name": "Microwave, 1,000 W", "group": "Kitchen", "run": 1500, "start": 1500, "v240": false, "src": "honda", "note": ""}, {"id": "coffee", "name": "Coffee maker (4 cup)", "group": "Kitchen", "run": 600, "start": 600, "v240": false, "src": "honda", "note": ""}, {"id": "range", "name": "Electric range, one 8-inch element", "group": "Kitchen", "run": 2100, "start": 2100, "v240": true, "src": "honda", "note": "Honda marks this as 240 V."}, {"id": "sump_13", "name": "Sump pump, 1/3 HP", "group": "Water and heat", "run": 800, "start": 1300, "v240": true, "src": "honda", "note": "Honda marks this as 240 V; many sump pumps are 120 V, so check yours."}, {"id": "sump_12", "name": "Sump pump, 1/2 HP", "group": "Water and heat", "run": 1050, "start": 2150, "v240": true, "src": "honda", "note": "Honda marks this as 240 V; many sump pumps are 120 V, so check yours."}, {"id": "well_12", "name": "Well pump, 1/2 HP", "group": "Water and heat", "run": 1000, "start": 2000, "v240": false, "src": "champion", "note": "Champion lists 750-1,000 W running, 1,500-2,000 W starting; top of range used. Many well pumps are 240 V; check yours."}, {"id": "well_1", "name": "Well pump, 1 HP", "group": "Water and heat", "run": 2000, "start": 4000, "v240": false, "src": "champion", "note": "Champion lists 1,000-2,000 W running, 2,000-4,000 W starting; top of range used. Many well pumps are 240 V; check yours."}, {"id": "furnace_13", "name": "Furnace blower (gas or oil), 1/3 HP", "group": "Water and heat", "run": 700, "start": 1400, "v240": true, "src": "honda", "note": "Honda marks furnace fans as 240 V; many are 120 V, so check yours."}, {"id": "furnace_12", "name": "Furnace blower (gas or oil), 1/2 HP", "group": "Water and heat", "run": 875, "start": 2350, "v240": true, "src": "honda", "note": "Honda marks furnace fans as 240 V; many are 120 V, so check yours."}, {"id": "space_heater", "name": "Space heater (1,500 W)", "group": "Water and heat", "run": 1500, "start": 1500, "v240": false, "src": "champion", "note": "Champion lists 750-1,500 W; no extra starting watts."}, {"id": "water_heater", "name": "Electric water heater", "group": "Water and heat", "run": 4500, "start": 4500, "v240": true, "src": "honda", "note": ""}, {"id": "window_ac_5k", "name": "Window AC, 5,000 BTU", "group": "Cooling", "run": 600, "start": 1200, "v240": false, "src": "champion", "note": "Champion lists 450-600 W running, 900-1,200 W starting; top of range used."}, {"id": "window_ac_10k", "name": "Window AC, 10,000 BTU", "group": "Cooling", "run": 1500, "start": 2200, "v240": false, "src": "honda", "note": ""}, {"id": "tv", "name": "TV, flat screen (46 inch)", "group": "Everyday", "run": 190, "start": 190, "v240": false, "src": "honda", "note": ""}, {"id": "led", "name": "LED light bulb (each)", "group": "Everyday", "run": 15, "start": 15, "v240": false, "src": "champion", "note": "Champion lists 8-15 W per bulb."}, {"id": "router", "name": "Internet router and modem", "group": "Everyday", "run": 20, "start": 20, "v240": false, "src": "champion", "note": "Champion lists 10-20 W."}, {"id": "charger", "name": "Phone or laptop charger", "group": "Everyday", "run": 100, "start": 100, "v240": false, "src": "champion", "note": "Champion lists 20-100 W."}, {"id": "laptop", "name": "Laptop computer", "group": "Everyday", "run": 250, "start": 250, "v240": false, "src": "honda", "note": "Honda lists 200-250 W."}, {"id": "fan", "name": "Portable fan", "group": "Everyday", "run": 40, "start": 120, "v240": false, "src": "honda", "note": ""}, {"id": "garage", "name": "Garage door opener", "group": "Everyday", "run": 720, "start": 1420, "v240": false, "src": "honda", "note": ""}, {"id": "washer", "name": "Clothes washer", "group": "Everyday", "run": 1200, "start": 1200, "v240": false, "src": "honda", "note": ""}, {"id": "cpap", "name": "CPAP (no heated humidifier)", "group": "Medical", "run": 60, "start": 60, "v240": false, "src": "champion", "note": "Champion lists 30-60 W. Ask your device maker or doctor about generator use."}, {"id": "cpap_heat", "name": "CPAP with heated humidifier", "group": "Medical", "run": 120, "start": 120, "v240": false, "src": "champion", "note": "Champion lists 60-120 W. Ask your device maker or doctor about generator use."}, {"id": "rv_ac_11k", "name": "RV air conditioner, 11,000 BTU", "group": "RV and camping", "run": 1010, "start": 1600, "v240": false, "src": "honda", "note": ""}, {"id": "rv_ac_135", "name": "RV air conditioner, 13,500 BTU", "group": "RV and camping", "run": 1800, "start": 2800, "v240": false, "src": "honda", "note": ""}, {"id": "rv_ac_15k", "name": "RV air conditioner, 15,000 BTU", "group": "RV and camping", "run": 2000, "start": 3300, "v240": false, "src": "honda", "note": ""}, {"id": "rv_fridge", "name": "RV refrigerator", "group": "RV and camping", "run": 180, "start": 600, "v240": false, "src": "honda", "note": ""}];var SRCS={"honda": {"name": "Honda Power Equipment, generator wattage estimation guide", "url": "https://powerequipment.honda.com/generators/generator-wattage-estimation-guide"}, "champion": {"name": "Champion Power Equipment, generator wattage chart", "url": "https://www.championpowerequipment.com/generator-wattage-chart"}, "generac": {"name": "Generac GP series portable generator brochure (wattage reference)", "url": "https://www.generac.com/globalassets/products/residential/portable-generators/brochure/7713-gp6500e-portable-generator-brochure.pdf"}};
+var KEY='appliancewatt.v1';
+var state={qty:{},run:{},start:{},custom:[],headroom:'0.20'};
+try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.qty){state=s;}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+function all(){return APPS.concat(state.custom);}
+function fmt(n){return Math.round(n).toLocaleString('en-US')+' W';}
+function num(v,d){var n=parseFloat(v);return isFinite(n)&&n>=0?n:d;}
+function getRun(a){return num(state.run[a.id],a.run);}
+function getStart(a){var s=num(state.start[a.id],a.start);return Math.max(s,getRun(a));}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(){
+  var list=document.getElementById('list');var html='';var groups=[];
+  all().forEach(function(a){if(groups.indexOf(a.group)<0)groups.push(a.group);});
+  groups.forEach(function(g){
+    html+='<h2>'+esc(g)+'</h2>';
+    all().filter(function(a){return a.group===g;}).forEach(function(a){
+      var q=state.qty[a.id]||0;var src=a.src&&SRCS[a.src];
+      html+='<div class="row'+(q>0?' on':'')+'" data-id="'+a.id+'">'+
+       '<div class="name"><div>'+esc(a.name)+(src?'<div class="src">Source: <a href="'+src.url+'" rel="nofollow" target="_blank">'+esc(src.name.split(',')[0])+'</a>'+(a.note?' · '+esc(a.note):'')+'</div>':'<div class="src">Your own numbers</div>')+'</div>'+(a.v240?'<span class="tag">240 V?</span>':'')+'</div>'+
+       '<div class="ctl"><div class="qty"><button type="button" data-act="minus" aria-label="Fewer '+esc(a.name)+'">−</button><output>'+q+'</output><button type="button" data-act="plus" aria-label="More '+esc(a.name)+'">+</button></div>'+
+       '<label class="w">Running W<input type="number" inputmode="numeric" min="0" data-f="run" value="'+getRun(a)+'"></label>'+
+       '<label class="w">Starting W<input type="number" inputmode="numeric" min="0" data-f="start" value="'+num(state.start[a.id],a.start)+'"></label></div></div>';
+    });
+  });
+  list.innerHTML=html;document.getElementById('headroom').value=state.headroom;calc();
+}
+function calc(){
+  var h=parseFloat(state.headroom)||0.2;var run=0,extra=0,ex=null,any=false,v240=false;var rows='';
+  all().forEach(function(a){var q=state.qty[a.id]||0;if(!q)return;any=true;
+    var r=getRun(a),s=getStart(a);run+=q*r;var e=s-r;if(ex===null||e>extra){extra=e;ex=a;}
+    if(a.v240)v240=true;
+    rows+='<tr><td>'+esc(a.name)+'</td><td class="num">'+q+'</td><td class="num">'+fmt(q*r)+'</td><td class="num">'+fmt(s)+'</td></tr>';});
+  var peak=run+extra;
+  document.getElementById('tRun').textContent=fmt(run);
+  document.getElementById('tPeak').textContent=fmt(peak);
+  var tb=document.querySelector('#breakdown tbody');
+  if(!any){document.getElementById('tRec').textContent='Pick an appliance';document.getElementById('tWhy').textContent='';tb.innerHTML='<tr><td colspan="4">Nothing picked yet.</td></tr>';document.getElementById('w240').style.display='none';return;}
+  var needRun=Math.ceil(run*(1+h)/100)*100;var needStart=Math.ceil(peak/100)*100;
+  document.getElementById('tRec').textContent=needRun.toLocaleString('en-US')+' W running · '+needStart.toLocaleString('en-US')+' W starting';
+  document.getElementById('tWhy').textContent=(ex&&extra>0?'Largest starting surge: '+ex.name+' ('+fmt(getStart(ex))+' to start). ':'No motor surge in your list. ')+'Running includes '+Math.round(h*100)+'% headroom.';
+  document.getElementById('w240').style.display=v240?'block':'none';
+  tb.innerHTML=rows+'<tr><td><strong>Total</strong></td><td></td><td class="num"><strong>'+fmt(run)+'</strong></td><td class="num">peak '+fmt(peak)+'</td></tr>';
+}
+document.getElementById('list').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-act]');if(!b)return;var id=b.closest('.row').getAttribute('data-id');
+  var q=state.qty[id]||0;q=b.getAttribute('data-act')==='plus'?Math.min(q+1,99):Math.max(q-1,0);state.qty[id]=q;save();
+  var row=b.closest('.row');row.querySelector('output').textContent=q;row.classList.toggle('on',q>0);calc();});
+document.getElementById('list').addEventListener('input',function(e){
+  var i=e.target;var f=i.getAttribute('data-f');if(!f)return;var id=i.closest('.row').getAttribute('data-id');
+  state[f][id]=i.value;save();calc();});
+document.getElementById('headroom').addEventListener('change',function(e){state.headroom=e.target.value;save();calc();});
+document.getElementById('reset').addEventListener('click',function(){state={qty:{},run:{},start:{},custom:[],headroom:'0.20'};save();render();});
+document.getElementById('cAdd').addEventListener('click',function(){
+  var n=document.getElementById('cName').value.trim();var r=num(document.getElementById('cRun').value,NaN);var s=num(document.getElementById('cStart').value,NaN);
+  if(!n||!isFinite(r)){alert('Add a name and running watts.');return;}
+  if(!isFinite(s))s=r;var id='c'+Date.now();state.custom.push({id:id,name:n,group:'Your appliances',run:r,start:s,v240:false,src:'',note:''});state.qty[id]=1;save();
+  document.getElementById('cName').value='';document.getElementById('cRun').value='';document.getElementById('cStart').value='';render();});
+render();
+})();
+</script>
+<footer><div class="wrap">
+<p><strong>ApplianceWatt</strong> is a free sizing tool. Wattage numbers are typical values from manufacturer guides, not measurements of your appliances. Check the label on your own appliance and your generator's manual. Nothing here replaces a licensed electrician.</p>
+<p>This site has no affiliate or store links.</p>
+<p><a href="index.html">Calculator</a> · <a href="guides/index.html">Guides</a> · Updated 2026-11-11</p>
+</div></footer>
+</body></html>
